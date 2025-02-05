@@ -3,18 +3,36 @@ package com.primeiro_exercicio;
 import com.primeiro_exercicio.entities.Order;
 import com.primeiro_exercicio.services.OrderService;
 import com.primeiro_exercicio.services.ShippingService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Locale;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class PrimeiroExercicioApplication {
+@ComponentScan({"com.primeiro_exercicio"})
 
-	public static void main(String[] args) {
 
-//		SpringApplication.run(PrimeiroExercicioApplication.class, args);
+public class PrimeiroExercicioApplication implements CommandLineRunner {
+
+	private OrderService orderService;
+	private ShippingService shippingService;
+
+	public PrimeiroExercicioApplication(OrderService orderService, ShippingService shippingService) {
+		this.orderService = orderService;
+		this.shippingService = shippingService;
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		SpringApplication.run(PrimeiroExercicioApplication.class, args);
+
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
 
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
@@ -28,10 +46,6 @@ public class PrimeiroExercicioApplication {
 
 		Order order = new Order(code, basic, discount);
 
-		ShippingService shippingService = new ShippingService();
-
-		OrderService orderService = new OrderService(shippingService);
-
 		double valorPed = orderService.total(order);
 
 		System.out.println("Pedido código : " + code);
@@ -39,4 +53,4 @@ public class PrimeiroExercicioApplication {
 
 	}
 
-}
+	}
