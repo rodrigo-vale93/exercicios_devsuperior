@@ -3,6 +3,7 @@ package com.primeiro_exercicio;
 import com.primeiro_exercicio.entities.Order;
 import com.primeiro_exercicio.services.OrderService;
 import com.primeiro_exercicio.services.ShippingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,18 +15,15 @@ import java.util.Scanner;
 @SpringBootApplication
 @ComponentScan({"com.primeiro_exercicio"})
 
-
 public class PrimeiroExercicioApplication implements CommandLineRunner {
 
 	private OrderService orderService;
-	private ShippingService shippingService;
 
-	public PrimeiroExercicioApplication(OrderService orderService, ShippingService shippingService) {
+	public PrimeiroExercicioApplication(OrderService orderService) {
 		this.orderService = orderService;
-		this.shippingService = shippingService;
 	}
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)	 {
 
 		SpringApplication.run(PrimeiroExercicioApplication.class, args);
 

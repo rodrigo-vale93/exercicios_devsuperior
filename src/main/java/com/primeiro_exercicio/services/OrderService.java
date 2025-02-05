@@ -7,21 +7,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
-    @Autowired
-    private ShippingService shippingService;
+@Autowired
+private ShippingService shippingService;
 
-    public OrderService(ShippingService shippingService){
-        this.shippingService = shippingService;
-    }
+public OrderService(ShippingService shippingService){
+    this.shippingService = shippingService;
+}
 
-    public OrderService(){
+public OrderService(){
 
-    }
+}
 
-    public double total(Order order) {
+public double total(Order order) {
 
-        return order.getBasic() - (order.getBasic() * order.getDiscount()/100) + shippingService.shipment(order);
+return order.getBasic() - (order.getBasic() * order.getDiscount()/100) + shippingService.shipment(order);
 
-    }
+}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShippingService {
 
+
     public double shipment(Order order) {
 
         double valor = order.getBasic() - (order.getBasic() * (order.getDiscount() / 100));

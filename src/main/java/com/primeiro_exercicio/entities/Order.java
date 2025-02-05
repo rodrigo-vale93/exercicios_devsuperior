@@ -1,9 +1,14 @@
 package com.primeiro_exercicio.entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Order {
 
+    @Autowired
     private Integer code;
+    @Autowired
     private double basic;
+    @Autowired
     private double discount;
 
     public Order(Integer code, double basic, double discount) {
